@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="el">
 <head>
@@ -7,10 +8,16 @@
 </head>
 <body>
     <h1>Ο Κόσμος της Νεφέλης</h1>
-    <div id="quiz-container">
-        <p id="question">Ερώτηση θα εμφανιστεί εδώ</p>
-        <div id="answers"></div>
-        <button onclick="nextQuestion()">Επόμενη</button>
+    <p>Διάλεξε τι θέλεις να κάνεις σήμερα:</p>
+    <div class="menu">
+        <button onclick="navigate('askiseis')">📘 Ασκήσεις</button>
+        <button onclick="navigate('paromythia')">🎬 Ερωτήσεις Παραμυθιών</button>
+        <button onclick="navigate('tiemathematoday')">🌈 Τι έμαθες σήμερα;</button>
+        <button onclick="navigate('agapimena')">💖 Αγαπημένα</button>
+        <button onclick="navigate('xartis')">🗺️ Χάρτης του Κόσμου</button>
+    </div>
+    <div id="content" class="content-box">
+        <p>Εδώ θα εμφανίζονται οι δραστηριότητες μόλις επιλέξεις μία.</p>
     </div>
     <script src="script.js"></script>
 </body>
