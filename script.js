@@ -1,21 +1,35 @@
 
-function navigate(section) {
-    let content = document.getElementById("content");
-    switch(section) {
-        case "askiseis":
-            content.innerHTML = "<h2>Ασκήσεις</h2><p>Πόσο κάνει 2 + 3; <br><button onclick=\"alert('Σωστά!')\">5</button> <button onclick=\"alert('Δοκίμασε ξανά')\">6</button></p>";
-            break;
-        case "paromythia":
-            content.innerHTML = "<h2>Ερωτήσεις Παραμυθιών</h2><p>Ποια είναι η αδελφή της Έλσας στο Frozen; <br><button onclick=\"alert('Σωστά! Η Άννα!')\">Άννα</button> <button onclick=\"alert('Δοκίμασε ξανά')\">Μαρία</button></p>";
-            break;
-        case "tiemathematoday":
-            content.innerHTML = "<h2>Τι έμαθες σήμερα;</h2><textarea rows='4' cols='40' placeholder='Γράψε εδώ...'></textarea><br><button onclick=\"alert('Μπράβο!')\">Αποθήκευση</button>";
-            break;
-        case "agapimena":
-            content.innerHTML = "<h2>Αγαπημένα</h2><p>Εδώ θα εμφανίζονται όσα αγαπάς!</p>";
-            break;
-        case "xartis":
-            content.innerHTML = "<h2>Χάρτης του Κόσμου</h2><p>🧚 Η Χώρα των Παραμυθιών<br>🔤 Ο Πύργος των Ασκήσεων<br>💖 Η Κοιλάδα των Αγαπημένων</p>";
-            break;
+const questions = [
+    {
+        question: "Ποια είναι η αδερφή της Έλσας στο Frozen;",
+        answers: ["Άννα", "Μαρία", "Κατερίνα"],
+        correct: 0
+    },
+    {
+        question: "Πόσα πόδια έχει ένα σκυλί;",
+        answers: ["2", "4", "6"],
+        correct: 1
     }
+];
+
+let current = 0;
+
+function showQuestion() {
+    const q = questions[current];
+    document.getElementById('question').innerText = q.question;
+    const answersDiv = document.getElementById('answers');
+    answersDiv.innerHTML = '';
+    q.answers.forEach((ans, i) => {
+        const btn = document.createElement('button');
+        btn.innerText = ans;
+        btn.onclick = () => alert(i === q.correct ? 'Σωστό!' : 'Λάθος!');
+        answersDiv.appendChild(btn);
+    });
 }
+
+function nextQuestion() {
+    current = (current + 1) % questions.length;
+    showQuestion();
+}
+
+window.onload = showQuestion;
