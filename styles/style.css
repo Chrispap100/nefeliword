@@ -5,6 +5,11 @@ body {
     text-align: center;
     padding: 20px;
 }
+header {
+    background-color: #ffe4ec;
+    padding: 10px;
+    border-radius: 12px;
+}
 .menu button {
     background-color: #ffd1dc;
     margin: 10px;
